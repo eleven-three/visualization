@@ -206,11 +206,9 @@ export default {
               symbolSize: 3,
             },
             lineStyle: {
-              normal: {
-                color: color[i],
-                width: 0,
-                curveness: 0.2,
-              },
+              color: color[i],
+              width: 0,
+              curveness: 0.2,
             },
             data: convertData(item[1]),
           },
@@ -229,12 +227,10 @@ export default {
               symbolSize: 15,
             },
             lineStyle: {
-              normal: {
-                color: color[i],
-                width: 1,
-                opacity: 0.6,
-                curveness: 0.2,
-              },
+              color: color[i],
+              width: 1,
+              opacity: 0.6,
+              curveness: 0.2,
             },
             data: convertData(item[1]),
           },
@@ -248,21 +244,18 @@ export default {
               brushType: "stroke",
             },
             label: {
-              normal: {
-                show: true,
-                position: "right",
-                formatter: "{b}",
-              },
+              show: true,
+              position: "right",
+              formatter: "{b}",
             },
             symbolSize: 20,
-            itemStyle: {
-              normal: {
-                color: color[i],
-              },
-              emphasis: {
+            emphasis: {
+              color: color[i],
+              itemStyle: {
                 areaColor: "#2B91B7",
               },
             },
+
             data: item[1].map(function (dataItem) {
               return {
                 name: dataItem[1].name,
@@ -296,24 +289,22 @@ export default {
 
         geo: {
           map: "china",
-          label: {
-            emphasis: {
+          emphasis: {
+            label: {
               show: true,
               color: "#fff",
+            },
+            itemStyle: {
+              areaColor: "#2B91B7",
             },
           },
           roam: true,
           //   放大我们的地图
           zoom: 1,
           itemStyle: {
-            normal: {
-              areaColor: "#142957",
-              borderColor: "#1950c4",
-              borderWidth: 1,
-            },
-            emphasis: {
-              areaColor: "#2B91B7",
-            },
+            areaColor: "#142957",
+            borderColor: "#1950c4",
+            borderWidth: 1,
           },
         },
         series: series,

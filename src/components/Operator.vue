@@ -6,6 +6,7 @@
 
 <script>
 import * as echarts from "echarts";
+import { getRandom } from "../utils/index";
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Operator",
@@ -31,11 +32,11 @@ export default {
       const data3 = [];
       const data4 = [];
       const timeList = [];
-      for (let i = 0; i <= 300; i++) {
-        data1.push(Math.floor(Math.random() * 1000));
-        data2.push(Math.floor(Math.random() * 1000));
-        data3.push(Math.floor(Math.random() * 1000));
-        data4.push(Math.floor(Math.random() * 1000));
+      for (let i = 0; i <= 50; i++) {
+        data1.push(getRandom(800, 1000));
+        data2.push(getRandom(900, 1100));
+        data3.push(getRandom(700, 900));
+        data4.push(getRandom(600, 800));
         let date = new Date();
         date = new Date(+date - (1000 - i) * 1000);
 
@@ -69,9 +70,15 @@ export default {
           type: "category",
           boundaryGap: false,
           data: data1,
+          splitLine: {
+            show: false,
+          },
         },
         yAxis: {
           type: "value",
+          splitLine: {
+            show: false,
+          },
         },
         series: [
           {
@@ -79,27 +86,28 @@ export default {
             type: "line",
             symbol: "none",
             data: data1,
+            smooth: true,
           },
           {
             name: "电信",
             type: "line",
-            stack: "总量",
             symbol: "none",
             data: data2,
+            smooth: true,
           },
           {
             name: "移动",
             type: "line",
-            stack: "总量",
             symbol: "none",
             data: data3,
+            smooth: true,
           },
           {
             name: "国际",
             type: "line",
-            stack: "总量",
             symbol: "none",
             data: data4,
+            smooth: true,
           },
         ],
       };
@@ -120,13 +128,14 @@ export default {
         timeList.push(`${hour}:${minute}:${second}`);
 
         data1.shift();
-        data1.push(Math.floor(Math.random() * 1000));
+        data1.push(data1[data1.length - 1] + getRandom(-5, 5));
         data2.shift();
-        data2.push(Math.floor(Math.random() * 1000));
+        data2.push(data2[data2.length - 1] + getRandom(-5, 5));
         data3.shift();
-        data3.push(Math.floor(Math.random() * 1000));
+        data3.push(data3[data3.length - 1] + getRandom(-5, 5));
         data4.shift();
-        data4.push(Math.floor(Math.random() * 1000));
+        data4.push(data4[data4.length - 1] + getRandom(-5, 5));
+
         myChart.setOption({
           xAxis: {
             data: timeList,
